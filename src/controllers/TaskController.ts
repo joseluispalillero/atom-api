@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { injectable } from 'tsyringe';
 import { TaskService } from '../services/TaskService';
 
@@ -27,14 +27,9 @@ export class TaskController {
     }
 
     async saveTask(req: Request, res: Response) {
-        try {
-            const { body } = req;
-            await this.taskService.saveTask(body);
-            res.status(200).json({ message: 'Task saved' });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'An error occurred' });
-        }
+        const { body } = req;
+        await this.taskService.saveTask(body);
+        res.status(200).json({ message: 'Task saved' });
     }
 
     async updateTask(req: Request, res: Response) {
