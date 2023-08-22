@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "e54d9a55-06f6-4307-aa3b-7892324d82ab",
+		"name": "TASKS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener todas las tareas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{atom_url}}/tasks",
+					"host": [
+						"{{atom_url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "obtener todas las tareas"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener tarea por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{atom_url}}/tasks/5XFyQyar2tUyKUiO3ZjK",
+					"host": [
+						"{{atom_url}}"
+					],
+					"path": [
+						"tasks",
+						"5XFyQyar2tUyKUiO3ZjK"
+					]
+				},
+				"description": "obtener una tarea por ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear nueva tarea",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Titulo 1\",\n    \"desc\": \"desc de tarea 1\",\n    \"status\": \"COMPLETO\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{atom_url}}/tasks/",
+					"host": [
+						"{{atom_url}}"
+					],
+					"path": [
+						"tasks",
+						""
+					]
+				},
+				"description": "Crear una nueva tarea"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar tarea",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Titulo actualizado 1\",\n    \"desc\": \"desc de tarea 1 actualizado\",\n    \"status\": \"PENDIENTE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{atom_url}}/tasks/povmDmXDrsnwonTllJZl",
+					"host": [
+						"{{atom_url}}"
+					],
+					"path": [
+						"tasks",
+						"povmDmXDrsnwonTllJZl"
+					]
+				},
+				"description": "Actualiza una tarea por el ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar tarea",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{atom_url}}/tasks/W0uwvrpIydF87InokyKu",
+					"host": [
+						"{{atom_url}}"
+					],
+					"path": [
+						"tasks",
+						"W0uwvrpIydF87InokyKu"
+					]
+				},
+				"description": "Elimina una tarea asociada a un ID"
+			},
+			"response": []
+		}
+	]
+}
