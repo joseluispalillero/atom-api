@@ -3,6 +3,7 @@ import { Task } from '../models/Task';
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { StatusCodes } from 'http-status-codes';
+import logger from '../core/loggers/Logger';
 
 // Initialize Firebase Admin SDK
 const serviceAccount = require('../../firebaseConfig.json');
@@ -19,10 +20,10 @@ export class TaskService {
             const taskRef = firestore.collection('tasks').doc(id);
             const doc = await taskRef.get()
             if (!doc.exists) {
-                console.log('No such document!');
+                logger.error('no encontrado!');
                 throw new CustomError('TASK_NOT_FOUND', 'Tarea no encontrada', StatusCodes.BAD_REQUEST);
             } else {
-                console.log('Document data:', doc.data());
+                logger.info('documento:', doc.data());
                 return doc.data() as Task;
             }
         } catch (error: any) {
@@ -52,6 +53,9 @@ export class TaskService {
 
     async saveTask(insertData: Partial<Task>): Promise<void> {
         try {
+            if (!insertData.title) {
+                throw new CustomError('TASK_ERROR_SERVER', 'Error al guardar la tarea' || '', StatusCodes.INTERNAL_SERVER_ERROR);
+            }
             const taskRef = firestore.collection('tasks');
             await taskRef.doc().set(insertData)
         } catch (error: any) {

@@ -25,5 +25,5 @@
     ], /* Files to include in compilation */
     "exclude": [
         "node_modules"
-    ] /* Files to exclude from compilation */
+    ]
 }
